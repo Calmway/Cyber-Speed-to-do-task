@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button {
+    border: none;
+}
+.my_todo_app_container {
+    padding: 50px 25px;
+}
+.my_todo_app_container p {
+    margin: 0 auto;
+    margin-bottom: 25px;
+}
+.list_of_tasks {
+    margin: 0 auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: stretch;
+}
+.task_completed {
+    color: #fff;
+}
+.task_completed svg path {
+    stroke: #fff;
+}
+
+@media (max-width: 640px) {
+    .list_of_tasks button {
+        margin-top: 15px;
+    }
+}
