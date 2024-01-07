@@ -1,6 +1,6 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <div class="task" v-for="task in useStore.listOfTask" :key="task.id" :class="task.completed ? 'task_completed bg-indigo-600' : ''">
+    <div class="task" v-for="task in useStore.listOfTask" :key="task.id" :class="task.completed ? 'task_completed bg-indigo-600' : ''"  @click="useStore.markAsSelected(task.id)">
         <div>
             <div class="flex h-6 items-center">
                 <input @input="useStore.markAsSelected(task.id)" id="comments" name="comments" type="checkbox"
