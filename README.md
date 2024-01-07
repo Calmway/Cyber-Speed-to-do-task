@@ -10,7 +10,7 @@
 # install
 npm i
 # serve with hot-reload for development
-npm run serve
+npm run dev
 ```
 
 
