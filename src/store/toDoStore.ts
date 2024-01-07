@@ -12,7 +12,8 @@ export const useToDoStore = defineStore('sessionStore', {
     },
     actions: {
         async createTask(newTask: Task) {
-            this.listOfTask.push(newTask);            
+            this.listOfTask.push(newTask);
+            this.markAll = false;
             await this.saveTasks();
         },
         markAsSelected(id: number) {
@@ -23,6 +24,10 @@ export const useToDoStore = defineStore('sessionStore', {
             found.selected = !found.selected;
         },
         async markAsCompleted() {
+            const selected = this.listOfTask.filter(x => x.selected);
+            if (!selected.length) {
+                return;
+            }
             this.listOfTask.forEach(task => {
                 if (task.selected) {
                     task.completed = true;
@@ -35,6 +40,10 @@ export const useToDoStore = defineStore('sessionStore', {
             await this.saveTasks();
         },
         async markAsNotCompleted() {
+            const selected = this.listOfTask.filter(x => x.selected);
+            if (!selected.length) {
+                return;
+            }
             this.listOfTask.forEach(task => {
                 if (task.selected) {
                     task.completed = false;
@@ -117,6 +126,10 @@ export const useToDoStore = defineStore('sessionStore', {
             }, 500);
         },
         async deleteSelected() {
+            const selected = this.listOfTask.filter(x => x.selected);
+            if (!selected.length) {
+                return;
+            }
             this.listOfTask = this.listOfTask.filter(x => !x.selected);
             this.markAll = false;
             await this.saveTasks();

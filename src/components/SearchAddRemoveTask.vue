@@ -37,7 +37,7 @@ export default {
             )
         );
         async function createTask() {
-            if (!addingTask.value || exist) {
+            if (!addingTask.value || exist.value) {
                 return;
             }
             if (useStore.listOfTask.find(x => x.name === addingTask.value)) {
